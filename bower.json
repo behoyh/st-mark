@@ -1,0 +1,16 @@
+{
+  "name": "client-boilerplate",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Shaddy <sm1@rgbsi.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^3.0.0",
+    "angular": "^1.5.6",
+    "angular-route": "^1.5.6"
+  }
+}
