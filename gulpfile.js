@@ -1,17 +1,19 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var browserify = require('gulp-browserify');
+var uglify = require('gulp-uglify');
+var rename = require("gulp-rename");
 var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('watch', function(){
-    gulp.watch('app/js/**/*.js', ['scripts']);
-    gulp.watch('app/sass/**/*.scss', ['sass']); 
+    gulp.watch(['client/**/*.js', '!client/libs'], ['scripts']);
+    gulp.watch('client/components/**/*.scss', ['sass']); 
 });
 
 gulp.task('webserver', function() {
-  gulp.src('app')
+  gulp.src('client')
     .pipe(webserver({
       livereload: true,
       open: true
@@ -19,22 +21,26 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src('app/js/app.js')
+    return gulp.src('client/app.js')
         .pipe(sourcemaps.init())
         .pipe(browserify({
           debug : !gulp.env.production
         }))
         .on('error', gutil.log)
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('app/build/js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(rename('app.min.js'))
+        .pipe(gulp.dest('client'))
 });
 
 gulp.task('sass', function () {
-    return gulp.src('app/sass/**/*.scss')
+    return gulp.src('client/components/**/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('app/build/css'));
+        .pipe(sass({outputStyle: 'compressed'})
+        .on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(rename('style.min.css'))
+        .pipe(gulp.dest('client'));
 });
 
 gulp.task('default', ['webserver', 'scripts', 'sass', 'watch']);
