@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["app.js"],"sourcesContent":["var app = angular.module('ClientBoilerplate', []);"],"file":"app.js","sourceRoot":"/source/"}
