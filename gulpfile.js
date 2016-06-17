@@ -8,8 +8,8 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('watch', function(){
-    gulp.watch(['client/**/*.js', '!client/libs'], ['scripts']);
-    gulp.watch('client/components/**/*.scss', ['sass']); 
+    gulp.watch(['client/**/**/*.js', '!client/libs'], ['scripts']);
+    gulp.watch(['client/**/**/*.scss', '!client/libs'], ['sass']); 
 });
 
 gulp.task('webserver', function() {
@@ -34,7 +34,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('sass', function () {
-    return gulp.src('client/components/**/*.scss')
+    return gulp.src('client/style.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'})
         .on('error', sass.logError))
