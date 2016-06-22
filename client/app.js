@@ -1,7 +1,8 @@
 (function(angular){
     
     var app = angular.module('ClientBoilerplate', [
-        'ngRoute'           // routing
+        'LocalForageModule',            // off-line storage   
+        'ngRoute'                       // routing
     ]);
 
     app.config(['$routeProvider', '$locationProvider', 
