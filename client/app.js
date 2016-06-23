@@ -1,6 +1,7 @@
 (function(angular){
     
     var app = angular.module('ClientBoilerplate', [
+        'child-component',              // child component
         'LocalForageModule',            // off-line storage   
         'ngRoute'                       // routing
     ]);
@@ -17,5 +18,6 @@
         }]);
 
     require('./components/home');
+    require('./components/child-component');
     
 })(window.angular);

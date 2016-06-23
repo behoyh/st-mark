@@ -12,7 +12,6 @@
     "angular": "^1.5.6",
     "angular-route": "^1.5.7",
     "font-awesome": "^4.6.3",
-    "upup": "^0.3.0",
     "angular-localforage": "^1.2.5"
   },
   "resolutions": {
