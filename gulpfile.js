@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
+var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
@@ -13,11 +14,12 @@ gulp.task('watch', function(){
 });
 
 gulp.task('webserver', function() {
-  gulp.src('client')
-    .pipe(webserver({
-      livereload: true,
-      open: true
-    }));
+    gulp.src('client')
+        .pipe(webserver({
+            https: true,
+            livereload: true,
+            open: true
+        }));
 });
 
 gulp.task('scripts', function() {
@@ -25,6 +27,10 @@ gulp.task('scripts', function() {
         .pipe(sourcemaps.init())
         .pipe(browserify({
           debug : !gulp.env.production
+        }))
+        .on('error', gutil.log)
+        .pipe(babel({
+            presets: ['es2015']
         }))
         .on('error', gutil.log)
         .pipe(uglify())
