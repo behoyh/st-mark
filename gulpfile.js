@@ -16,7 +16,7 @@ gulp.task('watch', function(){
 gulp.task('webserver', function() {
     gulp.src('client')
         .pipe(webserver({
-            https: true,
+            https: false,
             livereload: true,
             open: true
         }));
