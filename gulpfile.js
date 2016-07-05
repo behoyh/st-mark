@@ -7,14 +7,24 @@ var rename = require("gulp-rename");
 var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var swPrecache = require('sw-precache');
 
 gulp.task('watch', function(){
-    gulp.watch(['client/**/**/*.js', '!client/libs'], ['scripts']);
-    gulp.watch(['client/**/**/*.scss', '!client/libs'], ['sass']); 
+    gulp.watch('client/src/**/*.js', ['scripts']);
+    gulp.watch('client/src/**/*.scss', ['sass']); 
 });
 
 gulp.task('webserver', function() {
-    gulp.src('client')
+    swPrecache.write('client/sw.js', {
+        staticFileGlobs: [
+                'client/imgs/logo.png',
+                'client/dist/**/*.{js,css}',
+                'client/index.html',
+                'client/src/components/app-shell/app-shell.html'
+            ]
+    });
+  
+    return gulp.src('client')
         .pipe(webserver({
             https: false,
             livereload: true,
@@ -23,30 +33,29 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src('client/app.js')
+    return gulp.src('client/src/app.js')
         .pipe(sourcemaps.init())
         .pipe(browserify({
           debug : !gulp.env.production
         }))
-        .on('error', gutil.log)
         .pipe(babel({
             presets: ['es2015']
         }))
         .on('error', gutil.log)
         .pipe(uglify())
-        .pipe(sourcemaps.write())
         .pipe(rename('app.min.js'))
-        .pipe(gulp.dest('client'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('client/dist/js'))
 });
 
 gulp.task('sass', function () {
-    return gulp.src('client/style.scss')
+    return gulp.src('client/src/style.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'})
         .on('error', sass.logError))
-        .pipe(sourcemaps.write())
         .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('client'));
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('client/dist/css'));
 });
 
 gulp.task('default', ['webserver', 'scripts', 'sass', 'watch']);
