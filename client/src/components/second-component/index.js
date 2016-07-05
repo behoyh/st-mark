@@ -3,3 +3,5 @@
     .controller('SecondComponentController', ['$scope', require('./second-component.controller')])
     .directive('secondComponent', require('./second-component.directive'));
 })(window.angular);
+
+require('./nested-component');

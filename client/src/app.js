@@ -20,6 +20,5 @@
 
     require('./components/app-shell');
     require('./components/second-component');
-    require('./components/second-component/nested-component');
     
 })(window.angular);
