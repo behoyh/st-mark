@@ -58,4 +58,5 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('client/dist/css'));
 });
 
-gulp.task('default', ['webserver', 'scripts', 'sass', 'watch']);
+gulp.task('dev', ['scripts', 'sass', 'webserver', 'watch']);
+gulp.task('serve', ['webserver']);
