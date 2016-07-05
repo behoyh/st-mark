@@ -38,10 +38,10 @@ gulp.task('scripts', function() {
         .pipe(browserify({
           debug : !gulp.env.production
         }))
+        .on('error', gutil.log)
         .pipe(babel({
             presets: ['es2015']
         }))
-        .on('error', gutil.log)
         .pipe(uglify())
         .pipe(rename('app.min.js'))
         .pipe(sourcemaps.write('.'))
