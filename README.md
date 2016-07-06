@@ -18,13 +18,19 @@ This command will install all the libraries necessary to run the project.
 
 ``` bower install ```
 
+> Cd into the project directory and run the above commands.
+
 ---
 
 ### For Development
 
+This command will run Gulp automation and serve the index.
+
 ``` npm run dev ```
 
 ### For Preview
+
+This command will serve the index only.
 
 ``` npm start ```
 
