@@ -13,7 +13,7 @@ var concat = require('gulp-concat');
 var gulpIgnore = require('gulp-ignore');
 
 gulp.task('watch', function(){
-    gulp.watch('client/src/**/*.js', ['scripts']);
+    gulp.watch('client/src/**/*.js', ['app-scripts']);
     gulp.watch('client/src/**/*.scss', ['sass']); 
 });
 
