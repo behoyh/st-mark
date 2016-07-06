@@ -45,6 +45,9 @@ gulp.task('bower-vendor', function() {
         }))
         .pipe(sourcemaps.init())
         .pipe(gulpIgnore.include('**/*.js'))
+        .pipe(gulpIgnore.exclude([
+            '*.min.js'
+        ])) // files excluded
         .pipe(concat('vendor.min.js'))
         .pipe(uglify().on('error', gutil.log))
         .pipe(sourcemaps.write('.'))
