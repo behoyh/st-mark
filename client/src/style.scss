@@ -1,3 +1,8 @@
+// vendors
+@import "../../libs/font-awesome/css/font-awesome.min.css";
+@import "../../libs/bootstrap/dist/css/bootstrap.min.css";
+
+// app
 @import "components/app-shell/app-shell";
 @import "components/second-component/second-component";
 @import "components/second-component/nested-component/nested-component";

@@ -8,6 +8,9 @@ var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var swPrecache = require('sw-precache');
+var mainBowerFiles = require('main-bower-files');
+var concat = require('gulp-concat');
+var gulpIgnore = require('gulp-ignore');
 
 gulp.task('watch', function(){
     gulp.watch('client/src/**/*.js', ['scripts']);
@@ -32,7 +35,23 @@ gulp.task('webserver', function() {
         }));
 });
 
-gulp.task('scripts', function() {
+gulp.task('bower-vendor', function() {
+    return gulp.src(mainBowerFiles({
+            paths: {
+                bowerDirectory: 'client/libs',
+                bowerrc: './.bowerrc',
+                bowerJson: './bower.json'
+            }
+        }))
+        .pipe(sourcemaps.init())
+        .pipe(gulpIgnore.include('**/*.js'))
+        .pipe(concat('vendor.min.js'))
+        .pipe(uglify().on('error', gutil.log))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('client/dist/js'));
+});
+
+gulp.task('app-scripts', function() {
     return gulp.src('client/src/app.js')
         .pipe(sourcemaps.init())
         .pipe(browserify({
@@ -58,5 +77,5 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('client/dist/css'));
 });
 
-gulp.task('dev', ['scripts', 'sass', 'webserver', 'watch']);
-gulp.task('serve', ['webserver']);
+gulp.task('dev', ['sass', 'bower-vendor', 'app-scripts', 'webserver', 'watch']);
+gulp.task('serve', ['sass', 'bower-vendor', 'app-scripts', 'webserver']);
