@@ -5,12 +5,13 @@
 (function(angular){
     'use strict';
 
-    angular.module('ClientBoilerplate', [
-        'nested-component',             // nested component
-        'component',                    // component
-        'LocalForageModule',            // off-line storage   
-        'ngRoute'                       // routing
-    ]);
+    angular
+        .module('ClientBoilerplate', [
+            'nested-component',             // nested component
+            'component',                    // component
+            'LocalForageModule',            // off-line storage   
+            'ngRoute'                       // routing
+        ]);
 
     require('./app.config')(); // app config and routes included
 

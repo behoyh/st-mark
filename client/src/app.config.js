@@ -1,7 +1,8 @@
 module.exports = config;
 
 function config($routeProvider, $locationProvider){
-    angular.module('ClientBoilerplate')
+    angular
+        .module('ClientBoilerplate')
         .config(configApp);
 
         configApp.$inject = ['$routeProvider', '$locationProvider'];
