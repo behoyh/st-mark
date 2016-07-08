@@ -20,10 +20,10 @@ gulp.task('watch', function(){
 gulp.task('webserver', function() {
     swPrecache.write('client/sw.js', {
         staticFileGlobs: [
-                'client/imgs/logo.png',
-                'client/dist/**/*.{js,css}',
-                'client/index.html',
-                'client/src/components/app-shell/app-shell.html'
+                'imgs/logo.png',
+                'dist/**/*.{js,css}',
+                'index.html',
+                'src/components/layout/layout.html'
             ]
     });
   
@@ -55,7 +55,7 @@ gulp.task('bower-vendor', function() {
 });
 
 gulp.task('app-scripts', function() {
-    return gulp.src('client/src/app.js')
+    return gulp.src('client/src/app.module.js')
         .pipe(sourcemaps.init())
         .pipe(browserify({
           debug : !gulp.env.production
