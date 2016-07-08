@@ -7,7 +7,14 @@
 
 ---
 
-## Get Ready
+## Installation
+
+> Open the terminal and CD into the directory where you wish to start...
+
+This command will clone the repo
+
+``` git clone https://shaddyhm@bitbucket.org/rgbsi/client-boilerplate.git ```
+
 
 This command will install all the Node package necessary to run the project.
 
