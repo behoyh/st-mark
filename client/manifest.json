@@ -2,29 +2,29 @@
   "name": "Client Boilerplate",
   "short_name": "Boilerplate",
   "icons": [{
-        "src": "imgs/icons/icon_128.png",
+        "src": "imgs/app-icons/icon_128.png",
         "type": "image/png",
         "sizes": "128x128"
       }, {
-        "src": "imgs/icons/icon_152.png",
+        "src": "imgs/app-icons/icon_152.png",
         "type": "image/png",
         "sizes": "152x152"
       }, {
-        "src": "imgs/icons/icon_144.png",
+        "src": "imgs/app-icons/icon_144.png",
         "type": "image/png",
         "sizes": "144x144"
       }, {
-        "src": "imgs/icons/icon_192.png",
+        "src": "imgs/app-icons/icon_192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "imgs/icons/icon_256.png",
+        "src": "imgs/app-icons/icon_256.png",
         "type": "image/png",
         "sizes": "256x256"
       },
       {
-        "src": "imgs/icons/icon_512.png",
+        "src": "imgs/app-icons/icon_512.png",
         "type": "image/png",
         "sizes": "512x512"
       }],

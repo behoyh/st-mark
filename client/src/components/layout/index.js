@@ -1,6 +1,6 @@
 (function(angular){
     angular
-        .module('ClientBoilerplate')
+        .module('Ng1GoogliciousBoilerplate')
         .controller('LayoutController', require('./layout.controller'))
-        .directive('clientBoilerplate', require('./layout.directive'));
+        .directive('ng1GoogliciousBoilerplate', require('./layout.directive'));
 })(window.angular);

@@ -2,7 +2,7 @@ module.exports = config;
 
 function config($routeProvider, $locationProvider){
     angular
-        .module('ClientBoilerplate')
+        .module('Ng1GoogliciousBoilerplate')
         .config(configApp);
 
         configApp.$inject = ['$routeProvider', '$locationProvider'];

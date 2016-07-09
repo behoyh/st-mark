@@ -1,6 +1,6 @@
-module.exports = clientBoilerplate;
+module.exports = ng1GoogliciousBoilerplate;
 
-function clientBoilerplate(){
+function ng1GoogliciousBoilerplate(){
 
     let directive = {
         scope: false

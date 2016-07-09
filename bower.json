@@ -1,20 +1,20 @@
 {
-  "name": "client-boilerplate",
-  "description": "",
+  "name": "ng1-googlicious-boilerplate",
+  "description": "A boilerplate with all the Google godness",
   "main": "index.js",
   "authors": [
-    "Shaddy <sm1@rgbsi.com>"
+    "Shaddy <shaddyhm@outlook.com>"
   ],
   "license": "ISC",
   "homepage": "",
   "dependencies": {
-    "bootstrap": "^3.3.6",
     "angular": "^1.5.6",
     "angular-route": "^1.5.7",
-    "font-awesome": "^4.6.3",
-    "angular-localforage": "^1.2.5"
-  },
-  "resolutions": {
-    "angular": "^1.5.6"
+    "angular-localforage": "^1.2.5",
+    "angular-material": "^1.0.9",
+    "angular-messages": "^1.5.7",
+    "angular-sanitize": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7"
   }
 }
