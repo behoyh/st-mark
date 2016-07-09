@@ -22,7 +22,7 @@
 
     require('./app.config')(); // app config and routes included
 
-    require('./components/layout'); // app shell
+    require('./components/main');
     require('./components/component');
     
 })(window.angular);

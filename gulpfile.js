@@ -22,8 +22,7 @@ gulp.task('webserver', function() {
         staticFileGlobs: [
                 'imgs/logo.png',
                 'dist/**/*.{js,css}',
-                'index.html',
-                'src/components/layout/layout.html'
+                'index.html'
             ]
     });
   

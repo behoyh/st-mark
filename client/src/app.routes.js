@@ -3,8 +3,8 @@ module.exports = routes;
 function routes($routeProvider, $locationProvider){
     $routeProvider
         .when('/index', {
-            templateUrl: 'src/components/layout/layout.html',
-            controller: 'LayoutController',
+            templateUrl: 'src/components/component/component.html',
+            controller: 'ComponentController',
             controllerAs: 'vm'
         })
         

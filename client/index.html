@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Ng1GoogliciousBoilerplate">
-  <head>
-      
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel='manifest' href='manifest.json'>
-    <meta name='description' content='A boilerplate with all the Google godness.'>
-    
-    <title> Googlicious boilerplate </title>
-    
-    <script src="dist/js/vendor.min.js"></script>
-    <link rel="stylesheet" href="dist/css/style.min.css" />
-    
-  </head>
-  <body>
-    
-    <div ng-view></div> <!-- views -->
-    
-    <script src="dist/js/app.min.js"></script>
-    
-    <script>
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js', { scope: '/' })
-          .then(function(registration) {
-                console.log('Service Worker Registered');
-          });
-        navigator.serviceWorker.ready.then(function(registration) {
-           console.log('Service Worker Ready');
-        });
-      }
-    </script>
-    
-  </body>
+	<head>
+		
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel='manifest' href='manifest.json'>
+	<meta name='description' content='A boilerplate with all the Google godness.'>
+
+	<title> Googlicious boilerplate </title>
+
+	<link rel="stylesheet" href="dist/css/style.min.css" />
+	<script src="dist/js/vendor.min.js"></script>
+
+	</head>
+	<body ng-controller="MainController as vm" ng-cloak>
+		
+		<section id="main" layout="row" flex>
+			<md-sidenav
+					class="md-sidenav-left"
+					md-component-id="left"
+					md-is-locked-open="$mdMedia('gt-md')"
+					md-disable-backdrop
+					md-whiteframe="4">
+				<md-toolbar class="md-theme-indigo">
+					<h1 class="md-toolbar-tools">  {{ vm.brand }} </h1>             
+				</md-toolbar>
+				<md-content layout-padding>
+					
+					Some menu
+
+				</md-content>
+			</md-sidenav>
+			<md-content flex>
+				<md-toolbar class="md-hue-2">
+					<div class="md-toolbar-tools">
+						<md-button class="md-icon-button" aria-label="Settings"
+							ng-click="vm.toggleLeft()">
+							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
+						</md-button>
+						<h2>
+							<span> Ng1 Googlicious Boilerplate </span>
+						</h2>
+					</div>
+				</md-toolbar>
+				
+				<!-- views -->
+				<div ng-view></div> 
+			
+			</md-content>
+		</section>
+
+		<script src="dist/js/app.min.js"></script>
+		
+		<script>
+			if('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('./sw.js', { scope: '/' })
+				.then(function(registration) {
+						console.log('Service Worker Registered');
+				});
+				navigator.serviceWorker.ready.then(function(registration) {
+				console.log('Service Worker Ready');
+				});
+			}
+		</script>
+		
+	</body>
 </html>

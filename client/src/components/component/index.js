@@ -1,7 +1,7 @@
 (function(angular){
     angular
         .module('component', [])
-        .controller('SecondComponentController', require('./component.controller'))
+        .controller('ComponentController', require('./component.controller'))
         .directive('component', require('./component.directive'));
 })(window.angular);
 
