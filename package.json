@@ -24,7 +24,6 @@
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "main-bower-files": "^2.13.1",
-    "sw-precache": "^3.2.0"
+    "main-bower-files": "^2.13.1"
   }
 }

@@ -7,7 +7,6 @@ var rename = require("gulp-rename");
 var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
-var swPrecache = require('sw-precache');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var gulpIgnore = require('gulp-ignore');
@@ -17,18 +16,9 @@ gulp.task('watch', function(){
     gulp.watch('client/src/**/*.scss', ['sass']); 
 });
 
-gulp.task('webserver', function() {
-    swPrecache.write('client/sw.js', {
-        staticFileGlobs: [
-                'imgs/logo.png',
-                'dist/**/*.{js,css}',
-                'index.html'
-            ]
-    });
-  
+gulp.task('webserver', function() {  
     return gulp.src('client')
         .pipe(webserver({
-            https: false,
             livereload: true,
             open: true
         }));
@@ -44,9 +34,9 @@ gulp.task('bower-vendor', function() {
         }))
         .pipe(sourcemaps.init())
         .pipe(gulpIgnore.include('**/*.js'))
-        .pipe(gulpIgnore.exclude([
-            '*.min.js'
-        ])) // files excluded
+        // .pipe(gulpIgnore.exclude([
+        //     '*.min.js'
+        // ])) files excluded
         .pipe(concat('vendor.min.js'))
         .pipe(uglify().on('error', gutil.log))
         .pipe(sourcemaps.write('.'))

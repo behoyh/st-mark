@@ -7,6 +7,7 @@ function MainController($mdSidenav, $log, $timeout) {
     vm.brand = "Googlicious!";
     vm.close = close;
     vm.toggleLeft = buildDelayedToggler();
+    vm.navigateTo = navigateTo;
 
     function close() {
         $mdSidenav('left').close()
@@ -36,6 +37,10 @@ function MainController($mdSidenav, $log, $timeout) {
             func.apply(context, args);
             }, wait || 10);
         };
+    }
+
+    function navigateTo(place) {
+        $log.info(place);
     }
 
 }

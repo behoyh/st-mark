@@ -26,10 +26,15 @@
 				<md-toolbar class="md-theme-indigo">
 					<h1 class="md-toolbar-tools">  {{ vm.brand }} </h1>             
 				</md-toolbar>
-				<md-content layout-padding>
-					
-					Some menu
-
+				<md-content>
+					<md-list>
+						<md-subheader class="md-no-sticky"> Side menu </md-subheader>
+						<md-divider></md-divider>
+						<md-list-item ng-click="vm.navigateTo('settings'); vm.close();">
+							<md-icon md-svg-icon="imgs/icons/settings.svg"></md-icon>
+							<p> Settings </p>
+						</md-list-item>
+					</md-list> <!-- side menu list -->
 				</md-content>
 			</md-sidenav>
 			<md-content flex>
@@ -54,15 +59,27 @@
 		<script src="dist/js/app.min.js"></script>
 		
 		<script>
+			  
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyDwXqWhArusbxvQKfDI6zfKQWSpikM3jic",
+				authDomain: "ng1-googlicious-boil.firebaseapp.com",
+				databaseURL: "https://ng1-googlicious-boil.firebaseio.com",
+				storageBucket: "ng1-googlicious-boil.appspot.com",
+			};
+			firebase.initializeApp(config);
+
 			if('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('./sw.js', { scope: '/' })
-				.then(function(registration) {
-						console.log('Service Worker Registered');
-				});
-				navigator.serviceWorker.ready.then(function(registration) {
-				console.log('Service Worker Ready');
-				});
+					.then(function(registration) {
+							console.log('Service Worker Registered');
+					});
+					
+					navigator.serviceWorker.ready.then(function(registration) {
+						console.log('Service Worker Ready');
+					});
 			}
+			
 		</script>
 		
 	</body>

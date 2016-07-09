@@ -12,6 +12,7 @@
             'nested-component',             // nested component
             'component',                    // component
             'LocalForageModule',            // off-line storage
+            'firebase',                     // firebase
             'ngAria',                       // accessibility
             'ngSanitize',
             'ngMessages',                   // client messages
