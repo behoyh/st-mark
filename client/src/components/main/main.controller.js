@@ -40,7 +40,7 @@ function MainController($mdSidenav, $log, $timeout) {
     }
 
     function navigateTo(place) {
-        $log.info(place);
+        $log.debug(`go to ${place}`);
     }
 
 }

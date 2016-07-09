@@ -10,13 +10,24 @@ var sourcemaps = require('gulp-sourcemaps');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('gulp-concat');
 var gulpIgnore = require('gulp-ignore');
+var swPrecache = require('sw-precache');
 
 gulp.task('watch', function(){
     gulp.watch('client/src/**/*.js', ['app-scripts']);
     gulp.watch('client/src/**/*.scss', ['sass']); 
 });
 
-gulp.task('webserver', function() {  
+gulp.task('webserver', function() {
+
+    swPrecache.write('client/sw.js', {
+        staticFileGlobs: [
+            'client/dist/**/*.{js,css}',
+            'client/imgs/app-icons',
+            'client/index.html'        
+        ],
+        stripPrefix: 'client'
+    });
+        
     return gulp.src('client')
         .pipe(webserver({
             livereload: true,
