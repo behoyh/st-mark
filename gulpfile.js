@@ -18,10 +18,9 @@ gulp.task('watch', function(){
     gulp.watch('client/src/**/*.scss', ['sass']); 
 });
 
-gulp.task('webserver', function() {
-    venCss();
-    swCache();
-
+gulp.task('webserver',
+    ['vendor-css', 'sass', 'bower-vendor', 'app-scripts'], 
+    function() {
     return gulp.src('client')
         .pipe(webserver({
             livereload: true,
@@ -74,20 +73,18 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('client/dist/css'));
 });
 
-gulp.task('dev', ['sass', 'bower-vendor', 'app-scripts', 'webserver', 'watch']);
-gulp.task('serve', ['sass', 'bower-vendor', 'app-scripts', 'webserver']);
-
-
-function venCss(){
-    gulp.src('client/libs/**/*.min.css')
+gulp.task('vendor-css', function(){
+    return gulp.src([
+            'client/libs/angular-material/angular-material.min.css'
+        ])
         .pipe(sourcemaps.init())
         .pipe(concatCss('vendor.min.css'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('client/dist/css'));
-}
+});
 
-function swCache(){
-    swPrecache.write('client/sw.js', {
+gulp.task('sw-cache', function(){
+    return swPrecache.write('client/sw.js', {
         staticFileGlobs: [
             'client/dist/**/*.{js,css}',
             'client/imgs/icons/*.svg',
@@ -95,4 +92,7 @@ function swCache(){
         ],
         stripPrefix: 'client'
     });
-}
+});
+
+gulp.task('dev', ['sw-cache', 'webserver', 'watch']);
+gulp.task('serve', ['sw-cache', 'webserver']);
