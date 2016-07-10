@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/dist/css/style.min.css","7ccc0f2fb996df36caac05f6d1779e53"],["/dist/js/app.min.js","8832a2cd90a8d82ea0c59b58d6e743d8"],["/dist/js/vendor.min.js","d78758d9939670cf7fe48798f309a3d6"],["/index.html","be304901dd06dce4dff8b3bfb93732a4"]];
+var PrecacheConfig = [["/dist/css/style.min.css","7ccc0f2fb996df36caac05f6d1779e53"],["/dist/js/app.min.js","8832a2cd90a8d82ea0c59b58d6e743d8"],["/dist/js/vendor.min.js","d78758d9939670cf7fe48798f309a3d6"],["/imgs/icons/menu.svg","c800523f49b47cdc4ce9b41f50f6020c"],["/imgs/icons/settings.svg","4cd9ca115bfcac41c23791fdc95baa4b"],["/index.html","be304901dd06dce4dff8b3bfb93732a4"],["/libs/angular-material/angular-material.min.css","ed48739e2b8f7e63e67002058541f2f7"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 

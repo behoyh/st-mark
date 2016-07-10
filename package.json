@@ -1,7 +1,7 @@
 {
   "name": "ng1-googlicious-boilerplate",
   "version": "1.0.0",
-  "description": "A boilerplate with all the Google godness",
+  "description": "A boilerplate with all the Google goodness",
   "main": "index.js",
   "scripts": {
     "start": "gulp serve",

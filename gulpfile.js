@@ -22,8 +22,9 @@ gulp.task('webserver', function() {
     swPrecache.write('client/sw.js', {
         staticFileGlobs: [
             'client/dist/**/*.{js,css}',
-            'client/imgs/app-icons',
-            'client/index.html'        
+            'client/imgs/icons/*.svg',
+            'client/index.html',
+            'client/libs/angular-material/angular-material.min.css'
         ],
         stripPrefix: 'client'
     });
@@ -45,9 +46,9 @@ gulp.task('bower-vendor', function() {
         }))
         .pipe(sourcemaps.init())
         .pipe(gulpIgnore.include('**/*.js'))
-        // .pipe(gulpIgnore.exclude([
-        //     '*.min.js'
-        // ])) files excluded
+        .pipe(gulpIgnore.exclude([
+            '*.min.js'
+         ])) // files excluded
         .pipe(concat('vendor.min.js'))
         .pipe(uglify().on('error', gutil.log))
         .pipe(sourcemaps.write('.'))
