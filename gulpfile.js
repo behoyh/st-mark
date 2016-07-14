@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     sass = require('gulp-sass'),
     concatCss = require('gulp-concat-css'),
+    cssmin = require('gulp-cssmin'),
     sourcemaps = require('gulp-sourcemaps'),
     mainBowerFiles = require('main-bower-files'),
     concat = require('gulp-concat'),
@@ -79,6 +80,7 @@ gulp.task('vendor-css', function(){
         ])
         .pipe(sourcemaps.init())
         .pipe(concatCss('vendor.min.css'))
+        .pipe(cssmin())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('client/dist/css'));
 });
