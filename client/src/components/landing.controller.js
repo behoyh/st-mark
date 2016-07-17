@@ -1,7 +1,7 @@
-module.exports = MainController;
+module.exports = LandingController;
 
-MainController.$inject = ['$mdSidenav', '$log', '$timeout'];
-function MainController($mdSidenav, $log, $timeout) {
+LandingController.$inject = ['$mdSidenav', '$log', '$timeout'];
+function LandingController($mdSidenav, $log, $timeout) {
     let vm = this;
 
     vm.brand = "Googlicious!";

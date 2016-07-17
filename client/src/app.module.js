@@ -21,9 +21,9 @@
             'ngMaterial'                    // angular material design
         ]);
 
-    require('./app.config')(); // app config and routes included
+    require('./app.config')(); // app config
 
-    require('./components/main');
+    require('./components');
     require('./components/component');
     
 })(window.angular);

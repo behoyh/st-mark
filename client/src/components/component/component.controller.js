@@ -1,7 +1,7 @@
-module.exports = SecondComponentController;
+module.exports = ComponentController;
 
-SecondComponentController.$inject = [];
-function SecondComponentController(){
+ComponentController.$inject = [];
+function ComponentController(){
     let vm = this;
 
     vm.title = 'Child component!';

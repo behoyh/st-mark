@@ -7,7 +7,7 @@ function component(){
         scope: { },
         link: link,
         templateUrl: 'src/components/component/component.html',
-        controller: 'SecondComponentController',
+        controller: 'ComponentController',
         controllerAs: 'vm',
         bindToController: true
     }

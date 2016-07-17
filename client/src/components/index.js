@@ -1,5 +1,5 @@
 (function(angular){
     angular
         .module('Ng1GoogliciousBoilerplate')
-        .controller('MainController', require('./main.controller'))
+        .controller('LandingController', require('./landing.controller'))
 })(window.angular);

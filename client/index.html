@@ -16,7 +16,7 @@
 	<script src="dist/js/vendor.min.js"></script>
 
 	</head>
-	<body ng-controller="MainController as vm">
+	<body ng-controller="LandingController as vm" ng-cloak>
 		
 		<section id="main" layout="row" flex>
 			<md-sidenav
@@ -71,16 +71,16 @@
 			};
 			firebase.initializeApp(config);
 
-			if('serviceWorker' in navigator) {
-				navigator.serviceWorker.register('./sw.js', { scope: '/' })
-					.then(function(registration) {
-							console.log('Service Worker Registered');
-					});
+			// if('serviceWorker' in navigator) {
+			// 	navigator.serviceWorker.register('./sw.js', { scope: '/' })
+			// 		.then(function(registration) {
+			// 				console.log('Service Worker Registered');
+			// 		});
 					
-					navigator.serviceWorker.ready.then(function(registration) {
-						console.log('Service Worker Ready');
-					});
-			}
+			// 		navigator.serviceWorker.ready.then(function(registration) {
+			// 			console.log('Service Worker Ready');
+			// 		});
+			// }
 			
 		</script>
 		
