@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Ng1GoogliciousBoilerplate">
+<html lang="en" ng-app="st-mark">
 	<head>
 		
 	<meta charset="utf-8">
@@ -9,7 +9,7 @@
 	<link rel='manifest' href='manifest.json'>
 	<meta name='description' content='A boilerplate with all the Google goodness.'>
 
-	<title> Googlicious boilerplate </title>
+	<title> St Mark </title>
 
 	<link rel="stylesheet" href="dist/css/vendor.min.css" />
 	<link rel="stylesheet" href="dist/css/style.min.css" />
@@ -30,11 +30,15 @@
 				</md-toolbar>
 				<md-content>
 					<md-list>
-						<md-subheader class="md-no-sticky"> Side menu </md-subheader>
-						<md-divider></md-divider>
 						<md-list-item ng-click="vm.navigateTo('settings'); vm.close();">
-							<md-icon md-svg-icon="imgs/icons/settings.svg"></md-icon>
-							<p> Settings </p>
+							<md-icon md-svg-icon="imgs/icons/people.svg"></md-icon>
+							<p> Guests </p>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-subheader class="md-no-sticky"> Account </md-subheader>
+						<md-list-item ng-click="vm.close();">
+							<md-icon md-svg-icon="imgs/icons/logout.svg"></md-icon>
+							<p> Logout </p>
 						</md-list-item>
 					</md-list> <!-- side menu list -->
 				</md-content>
@@ -47,7 +51,7 @@
 							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
 						</md-button>
 						<h2>
-							<span> Ng1 Googlicious Boilerplate </span>
+							<span> {{ vm.brand }} </span>
 						</h2>
 					</div>
 				</md-toolbar>

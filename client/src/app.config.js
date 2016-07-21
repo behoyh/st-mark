@@ -2,7 +2,7 @@ module.exports = config;
 
 function config($routeProvider, $locationProvider){
     angular
-        .module('Ng1GoogliciousBoilerplate')
+        .module('st-mark')
         .config(configApp);
 
         configApp.$inject = ['$routeProvider', '$locationProvider'];

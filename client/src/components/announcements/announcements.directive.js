@@ -1,13 +1,13 @@
-module.exports = component;
+module.exports = announcements;
 
-component.$inject = [];
-function component(){
+announcements.$inject = [];
+function announcements(){
     let directive = {
         restrict: 'AE',
         scope: { },
         link: link,
-        templateUrl: 'src/components/component/component.html',
-        controller: 'ComponentController',
+        templateUrl: 'src/components/announcements/announcements.html',
+        controller: 'AnnouncementsController',
         controllerAs: 'vm',
         bindToController: true
     }

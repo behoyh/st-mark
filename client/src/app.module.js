@@ -8,9 +8,8 @@
     'use strict';
 
     angular
-        .module('Ng1GoogliciousBoilerplate', [
-            'nested-component',             // nested component
-            'component',                    // component
+        .module('st-mark', [
+            'announcements',                // announcements
             'LocalForageModule',            // off-line storage
             'firebase',                     // firebase
             'ngAria',                       // accessibility
@@ -24,6 +23,6 @@
     require('./app.config')(); // app config
 
     require('./components');
-    require('./components/component');
+    require('./components/announcements');
     
 })(window.angular);

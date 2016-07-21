@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/dist/css/style.min.css","dc95c14bab20da452c6126bc3c7e5481"],["/dist/css/vendor.min.css","3ea2e9d34353277571a8c76e39977d84"],["/dist/js/app.min.js","4d55b2c5734427b114e18a1dfe3bd9a6"],["/dist/js/vendor.min.js","67f54f68f3b041272cff1b5350c3d95d"],["/imgs/icons/menu.svg","c800523f49b47cdc4ce9b41f50f6020c"],["/imgs/icons/settings.svg","4cd9ca115bfcac41c23791fdc95baa4b"],["/index.html","f828868c1558270bfd165a68852d47a2"]];
+var PrecacheConfig = [["/dist/css/style.min.css","e4e54fc5b4576e982a4982739038b665"],["/dist/css/vendor.min.css","75b0e02be71870a4b55de62bc0ad06c5"],["/dist/js/app.min.js","74be832ee88efb3e75a85dc07b9ffcea"],["/dist/js/vendor.min.js","f6c88529486ed7739837965fd6b088b5"],["/imgs/icons/account.svg","b30cc48b747beddafa2c1214c7c6dbd8"],["/imgs/icons/logout.svg","16769e5df82f8c43c38e252ac7b89760"],["/imgs/icons/menu.svg","c800523f49b47cdc4ce9b41f50f6020c"],["/imgs/icons/people.svg","cdcb187fa744fa56469b7241ae4ef73c"],["/imgs/icons/settings.svg","4cd9ca115bfcac41c23791fdc95baa4b"],["/index.html","7798610397ef6dcada31bb64b483b567"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 

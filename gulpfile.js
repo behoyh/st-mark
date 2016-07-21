@@ -6,46 +6,26 @@ var gulp = require('gulp'),
     rename = require("gulp-rename"),
     gutil = require('gulp-util'),
     sass = require('gulp-sass'),
+    cleanCSS = require('gulp-clean-css'),
     concatCss = require('gulp-concat-css'),
-    cssmin = require('gulp-cssmin'),
+    stripCssComments = require('gulp-strip-css-comments'),
     sourcemaps = require('gulp-sourcemaps'),
-    mainBowerFiles = require('main-bower-files'),
     concat = require('gulp-concat'),
-    gulpIgnore = require('gulp-ignore'),
     swPrecache = require('sw-precache');
 
 gulp.task('watch', function(){
     gulp.watch('client/src/**/*.js', ['app-scripts']);
-    gulp.watch('client/src/**/*.scss', ['sass']); 
+    gulp.watch('client/src/**/*.scss', ['app-sass']); 
 });
 
 gulp.task('webserver',
-    ['vendor-css', 'sass', 'bower-vendor', 'app-scripts'], 
+    ['vendor-css', 'app-sass', 'vendor-js', 'app-scripts'], 
     function() {
     return gulp.src('client')
         .pipe(webserver({
             livereload: true,
             open: true
         }));
-});
-
-gulp.task('bower-vendor', function() {
-    return gulp.src(mainBowerFiles({
-            paths: {
-                bowerDirectory: 'client/libs',
-                bowerrc: './.bowerrc',
-                bowerJson: './bower.json'
-            }
-        }))
-        .pipe(sourcemaps.init())
-        .pipe(gulpIgnore.include('**/*.js'))
-        .pipe(gulpIgnore.exclude([
-            '*.min.js'
-         ])) // files excluded
-        .pipe(concat('vendor.min.js'))
-        .pipe(uglify().on('error', gutil.log))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('client/dist/js'));
 });
 
 gulp.task('app-scripts', function() {
@@ -58,13 +38,13 @@ gulp.task('app-scripts', function() {
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(uglify())
+        .pipe(uglify({ preserveComments: false }))
         .pipe(rename('app.min.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('client/dist/js'))
 });
 
-gulp.task('sass', function() {
+gulp.task('app-sass', function() {
     return gulp.src('client/src/style.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'})
@@ -74,13 +54,35 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('client/dist/css'));
 });
 
+gulp.task('vendor-js', function() {
+    return gulp.src([
+            'client/libs/angular/angular.min.js',
+            'client/libs/angular-route/angular-route.min.js',
+            'client/libs/angular-animate/angular-animate.min.js',
+            'client/libs/angular-aria/angular-aria.min.js',
+            'client/libs/angular-messages/angular-messages.min.js',
+            'client/libs/angular-sanitize/angular-sanitize.min.js',
+            'client/libs/angular-material/angular-material.min.js',
+            'client/libs/localforage/dist/localForage.min.js',
+            'client/libs/angular-localforage/dist/angular-localForage.min.js',
+            'client/libs/firebase/firebase.js',
+            'client/libs/angularfire/dist/angularfire.min.js'
+        ]) 
+        .pipe(sourcemaps.init())
+        .pipe(concat('vendor.min.js'))
+        .pipe(uglify({ preserveComments: false }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('client/dist/js'));
+});
+
 gulp.task('vendor-css', function(){
     return gulp.src([
-            'client/libs/angular-material/angular-material.min.css'
+            'client/libs/angular-material/angular-material.min.css',
         ])
         .pipe(sourcemaps.init())
-        .pipe(concatCss('vendor.min.css'))
-        .pipe(cssmin())
+        .pipe(concatCss('vendor.min.css', { rebaseUrls: false }))
+        .pipe(cleanCSS())
+        .pipe(stripCssComments({ preserve: false }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('client/dist/css'));
 });

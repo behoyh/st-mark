@@ -4,7 +4,7 @@ LandingController.$inject = ['$mdSidenav', '$log', '$timeout'];
 function LandingController($mdSidenav, $log, $timeout) {
     let vm = this;
 
-    vm.brand = "Googlicious!";
+    vm.brand = "St Mark";
     vm.close = close;
     vm.toggleLeft = buildDelayedToggler();
     vm.navigateTo = navigateTo;

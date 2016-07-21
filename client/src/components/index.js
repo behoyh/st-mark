@@ -1,5 +1,5 @@
 (function(angular){
     angular
-        .module('Ng1GoogliciousBoilerplate')
+        .module('st-mark')
         .controller('LandingController', require('./landing.controller'))
 })(window.angular);
