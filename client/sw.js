@@ -29,7 +29,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["/dist/css/style.min.css","e4e54fc5b4576e982a4982739038b665"],["/dist/css/vendor.min.css","75b0e02be71870a4b55de62bc0ad06c5"],["/dist/js/app.min.js","74be832ee88efb3e75a85dc07b9ffcea"],["/dist/js/vendor.min.js","f6c88529486ed7739837965fd6b088b5"],["/imgs/icons/account.svg","b30cc48b747beddafa2c1214c7c6dbd8"],["/imgs/icons/logout.svg","16769e5df82f8c43c38e252ac7b89760"],["/imgs/icons/menu.svg","c800523f49b47cdc4ce9b41f50f6020c"],["/imgs/icons/people.svg","cdcb187fa744fa56469b7241ae4ef73c"],["/imgs/icons/settings.svg","4cd9ca115bfcac41c23791fdc95baa4b"],["/index.html","7798610397ef6dcada31bb64b483b567"]];
+var PrecacheConfig = [["/dist/css/style.min.css","0cc1b7279f6ba8a287ed627c5fb4088e"],["/dist/css/vendor.min.css","75b0e02be71870a4b55de62bc0ad06c5"],["/dist/js/app.min.js","4bec46fd688b2905a05d091117ed75f4"],["/dist/js/vendor.min.js","f6c88529486ed7739837965fd6b088b5"],["/imgs/icons/account.svg","4cc1042609bb22f1b831e672c01e1cac"],["/imgs/icons/announcements.svg","f96dffbec0af9ee2150a610c05425c57"],["/imgs/icons/logout.svg","16769e5df82f8c43c38e252ac7b89760"],["/imgs/icons/menu.svg","d346927b079c06d3a5364e5a8dd9a62c"],["/imgs/icons/people.svg","cdcb187fa744fa56469b7241ae4ef73c"],["/imgs/icons/settings.svg","4cd9ca115bfcac41c23791fdc95baa4b"],["/index.html","e314a053116e753683aaab6f081c177c"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 

@@ -1,3 +1,22 @@
 // app styles
 @import "components/landing";
 @import "components/announcements/announcements";
+@import "components/guests-list/guests-list";
+@import "components/event-form/event-form";
+
+#toolbar {
+    z-index: 100;
+    position: fixed;
+    background-color: #f6f6f6 !important;
+    color: black;
+}
+
+#views {
+    margin-top: 60px;
+    background-color: #f5f8fa;
+}
+
+.md-sidenav-left {
+    z-index: 200;
+    position: fixed;
+}

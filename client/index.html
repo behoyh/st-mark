@@ -18,7 +18,7 @@
 	</head>
 	<body ng-controller="LandingController as vm" ng-cloak>
 		
-		<section id="main" layout="row" flex>
+		<section layout="row" flex>
 			<md-sidenav
 					class="md-sidenav-left"
 					md-component-id="left"
@@ -30,13 +30,17 @@
 				</md-toolbar>
 				<md-content>
 					<md-list>
-						<md-list-item ng-click="vm.navigateTo('settings'); vm.close();">
+						<md-list-item ng-click="vm.navigateTo('index'); vm.close();">
+							<md-icon md-svg-icon="imgs/icons/announcements.svg"></md-icon>
+							<p> Announcements </p>
+						</md-list-item>
+						<md-divider></md-divider>
+						<md-subheader class="md-no-sticky"> Admin </md-subheader>
+						<md-list-item ng-click="vm.navigateTo('guests-list'); vm.close();">
 							<md-icon md-svg-icon="imgs/icons/people.svg"></md-icon>
 							<p> Guests </p>
 						</md-list-item>
-						<md-divider></md-divider>
-						<md-subheader class="md-no-sticky"> Account </md-subheader>
-						<md-list-item ng-click="vm.close();">
+						<md-list-item ng-click="vm.logout(); vm.close();">
 							<md-icon md-svg-icon="imgs/icons/logout.svg"></md-icon>
 							<p> Logout </p>
 						</md-list-item>
@@ -44,20 +48,25 @@
 				</md-content>
 			</md-sidenav>
 			<md-content flex>
-				<md-toolbar class="md-hue-2">
+				<md-toolbar id="toolbar" class="md-hue-2" md-whiteframe="2">
 					<div class="md-toolbar-tools">
 						<md-button class="md-icon-button" aria-label="Settings"
 							ng-click="vm.toggleLeft()">
 							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
 						</md-button>
 						<h2>
-							<span> {{ vm.brand }} </span>
+							<span> {{ vm.title }} </span>
 						</h2>
+						<div flex></div>
+						<md-button class="md-icon-button" aria-label="Account"
+							ng-click="vm.navigateTo('login')">
+							<md-icon md-svg-icon="imgs/icons/account.svg"></md-icon>
+						</md-button>
 					</div>
 				</md-toolbar>
 				
 				<!-- views -->
-				<div ng-view></div> 
+				<div id="views" layout-padding ng-view></div> 
 			
 			</md-content>
 		</section>

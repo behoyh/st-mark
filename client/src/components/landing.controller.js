@@ -1,13 +1,15 @@
 module.exports = LandingController;
 
-LandingController.$inject = ['$mdSidenav', '$log', '$timeout'];
-function LandingController($mdSidenav, $log, $timeout) {
+LandingController.$inject = ['$mdSidenav', '$log', '$timeout', '$location', 'authService'];
+function LandingController($mdSidenav, $log, $timeout, $location, authService) {
     let vm = this;
 
     vm.brand = "St Mark";
+    vm.title;
     vm.close = close;
     vm.toggleLeft = buildDelayedToggler();
     vm.navigateTo = navigateTo;
+    vm.logout = logout;
 
     function close() {
         $mdSidenav('left').close()
@@ -41,6 +43,11 @@ function LandingController($mdSidenav, $log, $timeout) {
 
     function navigateTo(place) {
         $log.debug(`go to ${place}`);
+        $location.url(`/${place}`);
+    }
+
+    function logout(){
+        authService.logout();
     }
 
 }

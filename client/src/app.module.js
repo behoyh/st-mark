@@ -9,7 +9,10 @@
 
     angular
         .module('st-mark', [
+            'guests-list',
+            'event-form',
             'announcements',                // announcements
+            'login',
             'LocalForageModule',            // off-line storage
             'firebase',                     // firebase
             'ngAria',                       // accessibility
@@ -23,6 +26,10 @@
     require('./app.config')(); // app config
 
     require('./components');
+    require('./components/shared');
+    require('./components/login');
     require('./components/announcements');
-    
+    require('./components/event-form');
+    require('./components/guests-list');
+
 })(window.angular);
