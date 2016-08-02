@@ -1,78 +1,234 @@
-<div layout-padding>
+<div layout-padding id="popupContainer">
     <md-toolbar class="md-primary">
         <div class="md-toolbar-tools">
             <h2 class="md-flex"> Register </h2>
         </div>
     </md-toolbar>
     <md-content flex>
-        <div layout-gt-sm="row">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>First name</label>
-                <input ng-model="user.firstName">
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label>Last name</label>
-                <input ng-model="user.lastName">
-            </md-input-container>
-        </div>
-        <div layout="column">
-            <md-input-container class="md-block" flex-gt-sm>
-                <label> Email </label>
-                <input ng-model="user.email">
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label> Phone number </label>
-                <input ng-model="user.phoneNumber">
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label> Address </label>
-                <input ng-model="user.address">
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm>
-                <label> Home Church </label>
-                <input ng-model="user.homeChurch">
-            </md-input-container>
-            
-            <div layout="row">
-                <p> Are you bringing any kids? </p>
-                <div flex></div>
-                <md-checkbox ng-model="user.kids" aria-label="Kids"></md-checkbox>
+        <form name="guestForm" ng-submit="vm.submitGuestForm($event, vm.guest)">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name</label>
+                    <input type="text" name="firstName" ng-model="vm.guest.firstName" required>
+                    <div class="errors" ng-messages="guestForm.firstName.$error">
+                        <div ng-message="required">First name is required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Last name</label>
+                    <input type="text" name="lastName" ng-model="vm.guest.lastName" required>
+                    <div class="errors" ng-messages="guestForm.lastName.$error">
+                        <div ng-message="required">Last name is required</div>
+                    </div>
+                </md-input-container>
             </div>
-
-            <md-input-container class="md-block" ng-if="user.kids">
-                <label>How many?</label>
-                <md-select name="myModel" ng-model="user.kidsNum">
-                    <md-option value="1">One</md-option>
-                    <md-option value="2">Two</md-option>
-                    <md-option value="3">Three</md-option>
-                    <md-option value="4">Four</md-option>
-                    <md-option value="5">Five</md-option>
-                </md-select>
-                <div class="errors" ng-messages="myForm.myModel.$error" ng-if="myForm.$dirty">
-                    <div ng-message="required">Required</div>
+            <div layout="column">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Email </label>
+                    <input type="email" name="email" ng-model="vm.guest.email" required>
+                    <div class="errors" ng-messages="guestForm.email.$error">
+                        <div ng-message="required">Email is required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Phone number </label>
+                    <input type="number" name="phoneNumber" ng-model="vm.guest.phoneNumber" required>
+                    <div class="errors" ng-messages="guestForm.phoneNumber.$error">
+                        <div ng-message="required">Phone number is required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Address </label>
+                    <input type="text" name="address" ng-model="vm.guest.address" required>
+                    <div class="errors" ng-messages="guestForm.address.$error">
+                        <div ng-message="required">Address is required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Home Church </label>
+                    <input type="text" name="homeChurch" ng-model="vm.guest.homeChurch" ng-required="true">
+                    <div class="errors" ng-messages="guestForm.homeChurch.$error">
+                        <div ng-message="required">Home church is required</div>
+                    </div>
+                </md-input-container>
+                
+                <div layout="row">
+                    <p> Are you bringing any kids? </p>
+                    <div flex></div>
+                    <md-checkbox ng-model="vm.guest.kids" aria-label="Kids"></md-checkbox>
                 </div>
-            </md-input-container>
 
-            <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Child first name</label>
-                    <input ng-model="user.childFirstName1">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Child Last name</label>
-                    <input ng-model="user.childLastName1">
-                </md-input-container>
-            </div>
-
-            <div layout-gt-sm="row">
-                <md-input-container>
-                    <label>Age</label>
-                    <md-select ng-model="user.childAge1">
-                    <md-option ng-repeat="age in ages" value="{{size}}">{{size}}</md-option>
+                <md-input-container class="md-block" ng-if="vm.guest.kids">
+                    <label>How many?</label>
+                    <md-select name="kidsNum" ng-model="vm.guest.kidsNum" required>
+                        <md-option value="1">One</md-option>
+                        <md-option value="2">Two</md-option>
+                        <md-option value="3">Three</md-option>
                     </md-select>
+                    <div class="errors" ng-messages="guestForm.kidsNum.$error">
+                        <div ng-message="required">Number of kids is required</div>
+                    </div>
                 </md-input-container>
-            </div>
 
-        </div>
+                <div ng-if="vm.guest.kidsNum == '1' || 
+                            vm.guest.kidsNum == '2' || 
+                            vm.guest.kidsNum == '3'">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>First child's first name</label>
+                            <input name="childFirstName1" ng-model="vm.guest.childFirstName1" required>
+                            <div class="errors" ng-messages="guestForm.childFirstName1.$error">
+                                <div ng-message="required">First child's first name is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>First child's Last name</label>
+                            <input name="childLastName1" ng-model="vm.guest.childLastName1" required>
+                            <div class="errors" ng-messages="guestForm.childLastName1.$error">
+                                <div ng-message="required">First child's' first name is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <p> Gender </p>
+                            <md-radio-group name="gender1" ng-model="vm.guest.gender1" required>
+                                <md-radio-button value="male" class="md-primary"> Male </md-radio-button>
+                                <md-radio-button value="female"> Female </md-radio-button>
+                                <div class="errors" ng-messages="guestForm.gender1.$error">
+                                    <div ng-message="required">Gender is required</div>
+                                </div>
+                            </md-radio-group>
+                        </div>
+                        <md-input-container flex>
+                            <label>Age</label>
+                            <md-select name="childAge1" ng-model="vm.guest.childAge1">
+                                <md-option ng-repeat="age in vm.ages" value="{{age}}"> {{age}} </md-option>
+                                <div class="errors" ng-messages="guestForm.childAge1.$error">
+                                    <div ng-message="required">Age is required</div>
+                                </div>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout="coloum">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label> Allergies </label>
+                                <textarea ng-model="vm.guest.childAllergies1" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="vm.guest.kidsNum == '2' || 
+                            vm.guest.kidsNum == '3'">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Second child's first name</label>
+                            <input name="childFirstName2" ng-model="vm.guest.childFirstName2" required>
+                            <div class="errors" ng-messages="guestForm.childFirstName2.$error">
+                                <div ng-message="required">Second child's first name is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Second child's Last name</label>
+                            <input name="childLastName2" ng-model="vm.guest.childLastName2" required>
+                            <div class="errors" ng-messages="guestForm.childLastName2.$error">
+                                <div ng-message="required">Second child's' first name is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <p> Gender </p>
+                            <md-radio-group name="gender2" ng-model="vm.guest.gender2" required>
+                                <md-radio-button value="male" class="md-primary"> Male </md-radio-button>
+                                <md-radio-button value="female"> Female </md-radio-button>
+                                <div class="errors" ng-messages="guestForm.gender2.$error">
+                                    <div ng-message="required">Gender is required</div>
+                                </div>
+                            </md-radio-group>
+                        </div>
+                        <md-input-container flex>
+                            <label>Age</label>
+                            <md-select name="childAge2" ng-model="vm.guest.childAge2">
+                                <md-option ng-repeat="age in vm.ages" value="{{age}}"> {{age}} </md-option>
+                                <div class="errors" ng-messages="guestForm.childAge2.$error">
+                                    <div ng-message="required">Age is required</div>
+                                </div>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout="coloum">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label> Allergies </label>
+                                <textarea ng-model="vm.guest.childAllergies2" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="vm.guest.kidsNum == '3'">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Third child's first name</label>
+                            <input name="childFirstName3" ng-model="vm.guest.childFirstName3" required>
+                            <div class="errors" ng-messages="guestForm.childFirstName3.$error">
+                                <div ng-message="required">Third child's first name is required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Third child's Last name</label>
+                            <input name="childLastName3" ng-model="vm.guest.childLastName3" required>
+                            <div class="errors" ng-messages="guestForm.childLastName3.$error">
+                                <div ng-message="required">Third child's' first name is required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <p> Gender </p>
+                            <md-radio-group name="gender3" ng-model="vm.guest.gender3" required>
+                                <md-radio-button value="male" class="md-primary"> Male </md-radio-button>
+                                <md-radio-button value="female"> Female </md-radio-button>
+                                <div class="errors" ng-messages="guestForm.gender3.$error">
+                                    <div ng-message="required">Gender is required</div>
+                                </div>
+                            </md-radio-group>
+                        </div>
+                        <md-input-container flex>
+                            <label>Age</label>
+                            <md-select name="childAge3" ng-model="vm.guest.childAge3">
+                                <md-option ng-repeat="age in vm.ages" value="{{age}}"> {{age}} </md-option>
+                                <div class="errors" ng-messages="guestForm.childAge3.$error">
+                                    <div ng-message="required">Age is required</div>
+                                </div>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout="coloum">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label> Allergies </label>
+                                <textarea ng-model="vm.guest.childAllergies3" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div layout="row">
+                    <md-button flex="100" type="submit" class="md-raised md-primary"
+                        ng-disabled="guestForm.$invalid"> Submit </md-button>
+                </div>
+
+            </div>
+        </form>
     </md-content>
 </div>

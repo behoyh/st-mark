@@ -1,3 +1,19 @@
-<div id="guests" layout-padding>
-
-</div>
+<md-content id="guests" layout-padding>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label> Search guest </label>
+        <input type="text" name="search" ng-model="vm.query" required>
+    </md-input-container>
+    <md-list flex>
+        <md-subheader class="md-no-sticky">Guests list</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="guest in vm.guests | filter: vm.query" 
+            ng-click="vm.showSelectedGuest($event, guest, $index)">
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ guest.firstName }} {{ guest.lastName }}</h3>
+                <h4>{{ guest.email }}</h4>
+                <p>{{ guest.phoneNumber }}</p>
+                
+                <md-icon ng-if="guest.checkedIn" class="md-secondary" md-svg-icon="imgs/icons/check.svg"></md-icon>
+            </div>
+        </md-list-item>
+    </md-list>    
+</md-content>

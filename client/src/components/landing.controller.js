@@ -1,9 +1,9 @@
 module.exports = LandingController;
 
-LandingController.$inject = ['$mdSidenav', '$log', '$timeout', '$location', 'authService'];
-function LandingController($mdSidenav, $log, $timeout, $location, authService) {
+LandingController.$inject = ['$rootScope', '$mdSidenav', '$log', '$timeout', '$location', 'userControlsService', 'authService', '$route'];
+function LandingController($rootScope, $mdSidenav, $log, $timeout, $location, userControlsService, authService, $route) {
     let vm = this;
-
+    
     vm.brand = "St Mark";
     vm.title;
     vm.close = close;
@@ -11,10 +11,17 @@ function LandingController($mdSidenav, $log, $timeout, $location, authService) {
     vm.navigateTo = navigateTo;
     vm.logout = logout;
 
+    activate();
+
+    function activate(){
+        authService.auth()
+            .then(user => $rootScope.user = user.uid);
+    }
+
     function close() {
         $mdSidenav('left').close()
             .then(function () {
-            $log.debug("close LEFT is done");
+            $log.info("close LEFT is done");
         });
     }
     
@@ -23,7 +30,7 @@ function LandingController($mdSidenav, $log, $timeout, $location, authService) {
             $mdSidenav('left')
                 .toggle()
                 .then(function () {
-                    $log.debug("toggle left is done");
+                    $log.info("toggle left is done");
                 });
             }, 200);
     }
@@ -42,12 +49,14 @@ function LandingController($mdSidenav, $log, $timeout, $location, authService) {
     }
 
     function navigateTo(place) {
-        $log.debug(`go to ${place}`);
+        $log.info(`go to ${place}`);
         $location.url(`/${place}`);
     }
 
     function logout(){
-        authService.logout();
+        userControlsService.logout();
+        $rootScope.user = '';
+        $route.reload();
     }
 
 }

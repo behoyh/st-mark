@@ -1,15 +1,8 @@
 {
   "hosting": {
-    "public": "client",
-    "ignore": [
-      "libs",
-      "src/*.js", "src/*.scss"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "public": "client"
+  },
+  "database": {
+    "rules": "database.rules.json"
   }
 }

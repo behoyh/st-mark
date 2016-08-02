@@ -1,0 +1,207 @@
+<md-dialog id="dialog" aria-label="Guest information"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2> {{ selectedGuest.firstName }} {{ selectedGuest.lastName }} </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="imgs/icons/close.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+      
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name</label>
+                    <input type="text" name="firstName" ng-model="selectedGuest.firstName"
+                        >
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Last name</label>
+                    <input type="text" name="lastName" ng-model="selectedGuest.lastName"
+                        >
+                </md-input-container>
+            </div>
+            <div layout="column">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Email </label>
+                    <input type="email" name="email" ng-model="selectedGuest.email"
+                        >
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Phone number </label>
+                    <input type="number" name="phoneNumber" ng-model="selectedGuest.phoneNumber"
+                        >
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Address </label>
+                    <input type="text" name="address" ng-model="selectedGuest.address"
+                        >
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Home Church </label>
+                    <input type="text" name="homeChurch" ng-model="selectedGuest.homeChurch"
+                        >
+                </md-input-container>
+                
+                <div layout="row">
+                    <p> Are you bringing any kids? </p>
+                    <div flex></div>
+                    <md-checkbox ng-model="selectedGuest.kids" aria-label="Kids"
+                        ></md-checkbox>
+                </div>
+
+                <md-input-container class="md-block" ng-if="selectedGuest.kids">
+                    <label>How many?</label>
+                    <md-select name="kidsNum" ng-model="selectedGuest.kidsNum" >
+                        <md-option value="1">One</md-option>
+                        <md-option value="2">Two</md-option>
+                        <md-option value="3">Three</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <div ng-if="selectedGuest.kidsNum == '1' || 
+                            selectedGuest.kidsNum == '2' || 
+                            selectedGuest.kidsNum == '3'">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>First child's first name</label>
+                            <input name="childFirstName1" ng-model="selectedGuest.childFirstName1" 
+                                >
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>First child's Last name</label>
+                            <input name="childLastName1" ng-model="selectedGuest.childLastName1" 
+                                >
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <p> Gender </p>
+                            <md-radio-group name="gender1" ng-model="selectedGuest.gender1" 
+                                >
+                                <md-radio-button value="male" class="md-primary"> Male </md-radio-button>
+                                <md-radio-button value="female"> Female </md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <md-input-container flex>
+                            <label>Age</label>
+                            <input name="childAge3" ng-model="selectedGuest.childAge1"
+                                ="true">
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout="coloum">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label> Allergies </label>
+                                <textarea ng-model="selectedGuest.childAllergies1" md-maxlength="150" rows="5" md-select-on-focus
+                                    ="true"></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="selectedGuest.kidsNum == '2' || 
+                            selectedGuest.kidsNum == '3'">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Second child's first name</label>
+                            <input name="childFirstName2" ng-model="selectedGuest.childFirstName2" 
+                                >
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Second child's Last name</label>
+                            <input name="childLastName2" ng-model="selectedGuest.childLastName2" 
+                                >
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <p> Gender </p>
+                            <md-radio-group name="gender2" ng-model="selectedGuest.gender2" 
+                                >
+                                <md-radio-button value="male" class="md-primary"> Male </md-radio-button>
+                                <md-radio-button value="female"> Female </md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <md-input-container flex>
+                            <label>Age</label>
+                            <input name="childAge3" ng-model="selectedGuest.childAge2"
+                                >
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout="coloum">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label> Allergies </label>
+                                <textarea ng-model="selectedGuest.childAllergies2" md-maxlength="150" rows="5" md-select-on-focus
+                                    ></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-if="selectedGuest.kidsNum == '3'">
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Third child's first name</label>
+                            <input name="childFirstName3" ng-model="selectedGuest.childFirstName3"
+                                >
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Third child's Last name</label>
+                            <input name="childLastName3" ng-model="selectedGuest.childLastName3"
+                                >
+                        </md-input-container>
+                    </div>
+
+                    <div layout="row">
+                        <div flex>
+                            <p> Gender </p>
+                            <md-radio-group name="gender3" ng-model="selectedGuest.gender3"
+                                >
+                                <md-radio-button value="male" class="md-primary"> Male </md-radio-button>
+                                <md-radio-button value="female"> Female </md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <md-input-container flex>
+                            <label>Age</label>
+                            <input name="childAge3" ng-model="selectedGuest.childAge3"
+                                >
+                        </md-input-container>
+                    </div>
+                    
+                    <div layout="coloum">
+                        <div flex>
+                            <md-input-container class="md-block">
+                                <label> Allergies </label>
+                                <textarea ng-model="selectedGuest.childAllergies3" md-maxlength="150" rows="5" md-select-on-focus
+                                    ></textarea>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button flex class="md-raised md-primary"
+            ng-if="!selectedGuest.checkedIn"
+            ng-click="checkIn()"> 
+            Check in 
+        </md-button>
+        <md-button flex class="md-raised md-primary"
+            ng-if="selectedGuest.checkedIn"
+            ng-click="unCheckIn()"> 
+            Uncheck in 
+        </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

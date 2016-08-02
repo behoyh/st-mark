@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "guests": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

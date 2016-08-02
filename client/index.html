@@ -18,7 +18,7 @@
 	</head>
 	<body ng-controller="LandingController as vm" ng-cloak>
 		
-		<section layout="row" flex>
+		<section layout="row" style="height:100vh;">
 			<md-sidenav
 					class="md-sidenav-left"
 					md-component-id="left"
@@ -34,16 +34,24 @@
 							<md-icon md-svg-icon="imgs/icons/announcements.svg"></md-icon>
 							<p> Announcements </p>
 						</md-list-item>
+						<md-list-item class="md-list-item" href="http://stmarkmi.org/index.php/connect/Donate" target="_blank">
+							<md-icon md-svg-icon="imgs/icons/donate.svg"></md-icon>
+							<p> Donate </p>
+						</md-list-item>
 						<md-divider></md-divider>
-						<md-subheader class="md-no-sticky"> Admin </md-subheader>
-						<md-list-item ng-click="vm.navigateTo('guests-list'); vm.close();">
-							<md-icon md-svg-icon="imgs/icons/people.svg"></md-icon>
-							<p> Guests </p>
-						</md-list-item>
-						<md-list-item ng-click="vm.logout(); vm.close();">
-							<md-icon md-svg-icon="imgs/icons/logout.svg"></md-icon>
-							<p> Logout </p>
-						</md-list-item>
+						<div ng-if="$root.user">
+							<md-subheader class="md-no-sticky"> Admin </md-subheader>
+							<md-list-item 
+								ng-click="vm.navigateTo('guests-list'); vm.close();">
+								<md-icon md-svg-icon="imgs/icons/people.svg"></md-icon>
+								<p> Guests </p>
+							</md-list-item>
+							<md-list-item 
+								ng-click="vm.logout(); vm.close();">
+								<md-icon md-svg-icon="imgs/icons/logout.svg"></md-icon>
+								<p> Logout </p>
+							</md-list-item>
+						</div>
 					</md-list> <!-- side menu list -->
 				</md-content>
 			</md-sidenav>
@@ -55,18 +63,20 @@
 							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
 						</md-button>
 						<h2>
-							<span> {{ vm.title }} </span>
+							<span> {{ vm.brand }} </span>
 						</h2>
-						<div flex></div>
-						<md-button class="md-icon-button" aria-label="Account"
-							ng-click="vm.navigateTo('login')">
+						<span flex></span>
+						<md-button 
+							ng-if="!$root.user"
+							ng-click="vm.navigateTo('login')"
+							class="md-icon-button" aria-label="Account">
 							<md-icon md-svg-icon="imgs/icons/account.svg"></md-icon>
 						</md-button>
 					</div>
 				</md-toolbar>
 				
 				<!-- views -->
-				<div id="views" layout-padding ng-view></div> 
+				<div id="views" ng-view style="height:100vh;"></div> 
 			
 			</md-content>
 		</section>
@@ -77,10 +87,10 @@
 			  
 			// Initialize Firebase
 			var config = {
-				apiKey: "AIzaSyDwXqWhArusbxvQKfDI6zfKQWSpikM3jic",
-				authDomain: "ng1-googlicious-boil.firebaseapp.com",
-				databaseURL: "https://ng1-googlicious-boil.firebaseio.com",
-				storageBucket: "ng1-googlicious-boil.appspot.com",
+				apiKey: "AIzaSyDAg9FQTiAhJSOdQJzxavB5hPtJ5nZM2fU",
+				authDomain: "stmark-a7bc2.firebaseapp.com",
+				databaseURL: "https://stmark-a7bc2.firebaseio.com",
+				storageBucket: "",
 			};
 			firebase.initializeApp(config);
 

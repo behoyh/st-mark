@@ -1,7 +1,7 @@
 module.exports = routes;
 
 function routes($routeProvider, $locationProvider){
-    $routeProvider
+    return $routeProvider
         .when('/index', {
             templateUrl: 'src/components/landing.html',
             controller: 'LandingController',
@@ -10,18 +10,12 @@ function routes($routeProvider, $locationProvider){
         .when('/login', {
             templateUrl: 'src/components/login/login.html',
             controller: 'LoginController',
-            controllerAs: 'vm',
-            resolve: {
-                user: checkUserForLoginRoute 
-            }
+            controllerAs: 'vm'
         })
         .when('/guests-list', {
             templateUrl: 'src/components/guests-list/guests-list.html',
             controller: 'GuestsListController',
-            controllerAs: 'vm',           
-            resolve: {
-                user: getUser
-            }
+            controllerAs: 'vm'
         })
         .when('/event-form', {
             templateUrl: 'src/components/event-form/event-form.html',
@@ -31,18 +25,4 @@ function routes($routeProvider, $locationProvider){
 
         .otherwise({ redirectTo: '/index' });
 
-
-    getUser.$inject = ['authService'];
-    function getUser(authService){
-        return authService.auth();
-    }
-
-    checkUserForLoginRoute.$inject = ['authService', '$location'];
-    function checkUserForLoginRoute(authService, $location){
-        authService.auth()
-            .then(user => {
-                if (user.uid) return $location.url('/index');
-            }, error =>  error);
-        
-    }
 }
