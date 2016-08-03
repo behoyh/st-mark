@@ -7,6 +7,8 @@
 #toolbar {
     background-color: #f6f6f6 !important;
     color: black;
+    top:0px;
+    position:fixed;	
 }
 
 #views {
@@ -14,7 +16,7 @@
 }
 
 .md-sidenav-left {
-    z-index: 200;
+    z-index: 59;
     position: fixed;
     overflow: hidden;
 }
@@ -24,5 +26,13 @@
 }
 
 #dialogContent_dialog {
-    //z-index: 1000;
+    z-index: 1000;
+}
+.layout-padding
+{
+    margin-top:70px;
+}
+
+md-backdrop{
+    z-index:0!important;
 }

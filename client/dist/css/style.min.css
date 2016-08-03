@@ -1,3 +1,3 @@
-#component .indent{text-indent:50px}#toolbar{background-color:#f6f6f6 !important;color:black}#views{background-color:#f5f8fa}.md-sidenav-left{z-index:200;position:fixed;overflow:hidden}.md-list-item a{margin:0px}
+#component .indent{text-indent:50px}#toolbar{background-color:#f6f6f6 !important;color:black;top:0px;position:fixed}#views{background-color:#f5f8fa}.md-sidenav-left{z-index:59;position:fixed;overflow:hidden}.md-list-item a{margin:0px}#dialogContent_dialog{z-index:1000}.layout-padding{margin-top:70px}md-backdrop{z-index:0 !important}
 
 /*# sourceMappingURL=style.min.css.map */

@@ -9,7 +9,7 @@
 	<link rel='manifest' href='manifest.json'>
 	<meta name='description' content='A boilerplate with all the Google goodness.'>
 
-	<title> St Mark </title>
+	<title> St Mark Events - Troy, MI</title>
 
 	<link rel="stylesheet" href="dist/css/vendor.min.css" />
 	<link rel="stylesheet" href="dist/css/style.min.css" />
@@ -32,12 +32,19 @@
 					<md-list>
 						<md-list-item ng-click="vm.navigateTo('index'); vm.close();">
 							<md-icon md-svg-icon="imgs/icons/announcements.svg"></md-icon>
-							<p> Announcements </p>
-						</md-list-item>
+							<p>Schedule & Announcements </p>
+						</md-list-item><md-list-item ng-click="vm.notes();">
+                                                        <md-icon md-svg-icon="imgs/icons/people.svg"></md-icon>
+                                                        <p> Register </p>
+                                                </md-list-item>
 						<md-list-item class="md-list-item" href="http://stmarkmi.org/index.php/connect/Donate" target="_blank">
 							<md-icon md-svg-icon="imgs/icons/donate.svg"></md-icon>
 							<p> Donate </p>
 						</md-list-item>
+                                                <md-list-item ng-click="vm.navigateTo('login'); vm.close();">
+                                                        <md-icon md-svg-icon="imgs/icons/account.svg"></md-icon>
+                                                        <p> Login </p>
+                                                </md-list-item>
 						<md-divider></md-divider>
 						<div ng-if="$root.user">
 							<md-subheader class="md-no-sticky"> Admin </md-subheader>
@@ -58,20 +65,11 @@
 			<md-content flex>
 				<md-toolbar id="toolbar" class="md-hue-2" md-whiteframe="2">
 					<div class="md-toolbar-tools">
-						<md-button class="md-icon-button" aria-label="Settings"
+						<md-button ng-hide="window.screen.width>900" class="md-icon-button" aria-label="Settings"
 							ng-click="vm.toggleLeft()">
 							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
 						</md-button>
-						<h2>
-							<span> {{ vm.brand }} </span>
-						</h2>
 						<span flex></span>
-						<md-button 
-							ng-if="!$root.user"
-							ng-click="vm.navigateTo('login')"
-							class="md-icon-button" aria-label="Account">
-							<md-icon md-svg-icon="imgs/icons/account.svg"></md-icon>
-						</md-button>
 					</div>
 				</md-toolbar>
 				
