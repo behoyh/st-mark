@@ -13,7 +13,7 @@
 
 This command will clone the repo
 
-``` git clone https://github.com/shaddyhm/ng1-googlicious-boilerplate.git ```
+``` git clone https://github.com/behoyh/st-mark.git  ```
 
 
 This command will install all the Node package necessary to run the project.
