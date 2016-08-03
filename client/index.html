@@ -65,7 +65,7 @@
 			<md-content flex>
 				<md-toolbar id="toolbar" class="md-hue-2" md-whiteframe="2">
 					<div class="md-toolbar-tools">
-						<md-button ng-hide="window.screen.width>900" class="md-icon-button" aria-label="Settings"
+						<md-button ng-show="window.screen.width<1280" class="md-icon-button" aria-label="Settings"
 							ng-click="vm.toggleLeft()">
 							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
 						</md-button>
