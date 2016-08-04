@@ -9,7 +9,11 @@ function AnnouncementsController($location, $mdDialog){
     function notes(ev, guest){
         let confirm = $mdDialog.confirm()
           .title('Notes')
-          .textContent(`No children under the age of 13 will be permitted in the retreat. Child care and activities are available for children ages 4 to 12 on Friday, Sept 2. Registration is required for childcare. All events will be held at St. Mary & St. Philopateer Church and lectures will be given in Arabic. Live streaming will be available for all events for those who cannot attend. Pre-registration is required. A donation of $10 a person is suggested.`)
+          .textContent(`No children under the age of 13 will be permitted in the retreat.
+           All events will be held at St. Mary & St. Philopateer Church. Pre-registration is required
+           with a donation of $10 per person. Live streaming will be available for all events
+           for those who cannot attend at www.stmarkmi.org. Donation can be paid thru paypal by clicking
+           on the donate button in the upper left hand corner.`)
           .ariaLabel('Notes')
           .targetEvent(ev)
           .ok('I understand')

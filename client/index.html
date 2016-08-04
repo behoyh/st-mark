@@ -33,7 +33,7 @@
 						<md-list-item ng-click="vm.navigateTo('index'); vm.close();">
 							<md-icon md-svg-icon="imgs/icons/announcements.svg"></md-icon>
 							<p>Schedule & Announcements </p>
-						</md-list-item><md-list-item ng-click="vm.notes();">
+						</md-list-item><md-list-item ng-click="vm.notes(); vm.close();">
                                                         <md-icon md-svg-icon="imgs/icons/people.svg"></md-icon>
                                                         <p> Register </p>
                                                 </md-list-item>
@@ -41,7 +41,7 @@
 							<md-icon md-svg-icon="imgs/icons/donate.svg"></md-icon>
 							<p> Donate </p>
 						</md-list-item>
-                                                <md-list-item ng-click="vm.navigateTo('login'); vm.close();">
+                                                <md-list-item ng-if="!$root.user" ng-click="vm.navigateTo('login'); vm.close();">
                                                         <md-icon md-svg-icon="imgs/icons/account.svg"></md-icon>
                                                         <p> Login </p>
                                                 </md-list-item>
@@ -69,6 +69,7 @@
 							ng-click="vm.toggleLeft()">
 							<md-icon md-svg-icon="imgs/icons/menu.svg"></md-icon>
 						</md-button>
+						{{vm.title}}
 						<span flex></span>
 					</div>
 				</md-toolbar>
