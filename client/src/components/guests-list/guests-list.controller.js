@@ -31,7 +31,6 @@ function GuestsListController($rootScope, $scope, guestsListService, $log, $loca
                 function($scope, $firebaseArray, $log, $mdDialog){
 
                 $scope.selectedGuest = selectedGuest;
-                $scope.ages = [4, 5, 6, 7, 8, 9, 10, 11, 12];
 
                 $scope.cancel = function() {
                     $mdDialog.cancel();
